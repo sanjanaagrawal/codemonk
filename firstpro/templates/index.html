@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="navbar-nav">
+      <a class='nav-item nav-link' href="{% url 'register' %}">REGISTER</a>
+      <a class='nav-item nav-link' href="{% url 'login' %}">LOGIN</a>
+      <a class='nav-item nav-link' href="{% url 'profile' %}">PROFILE</a>
+      <a class='nav-item nav-link' href="{% url 'logout' %}">LOGOUT</a>
+      <a class='nav-item nav-link' href="{% url 'addrecipe' %}"><input type="submit" value="ADD"></a>
+      {% if disp %}
+        {% for i in disp %}
+          <h2>{{i.name}}</h2>
+          <p>{{i.description}}</p>
+          <img src="{{ image.model_pic.url }}" alt="NOT DISPLAYED">
+          <h4>Time- {{i.time}}</h4>
+          <h4>INGREDIENTS-</h4>
+          <p>{{i.ingredients}}</p>
+          <h4>DIRECTIONS-</h4>
+          <p>{{i.directions}}</p>
+        {% endfor %}
+      {% else %}
+        <h4>NO records</h4>
+      {% endif %}
+    </div>
+  </body>
+</html>
