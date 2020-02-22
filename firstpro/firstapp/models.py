@@ -6,7 +6,7 @@ class modeltable(models.Model):
     time=models.CharField(max_length=264,default='pqr')
     directions=models.CharField(max_length=264,default='pqr')
     description=models.CharField(max_length=264,default='pqr')
-    image=models.FileField(upload_to='fileupload',default='firstpro/static/p_resume.pdf')
+    image=models.FileField(upload_to='fileupload',default='firstpro/static/def.jpg')
 
 class profiletable(models.Model):
     extra=models.CharField(max_length=264,default='mno')
@@ -15,4 +15,4 @@ class profiletable(models.Model):
     ti=models.CharField(max_length=264,default='pqr')
     di=models.CharField(max_length=264,default='pqr')
     de=models.CharField(max_length=264,default='pqr')
-    im=models.FileField(upload_to='fileupload',default='firstpro/static/p_resume.pdf')
+    im=models.FileField(upload_to='fileupload',default='firstpro/static/def.jpg')
