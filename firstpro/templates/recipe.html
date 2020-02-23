@@ -3,10 +3,21 @@
 <div class="col-lg-12 tm-form-header pl-5 pr-5">
   <h2 class="tm-container-inner tm-text-color-white">{{display.name}} RECIPE </h2>
 </div>
+<br>
 <div class="col-lg-12 pl-2 pl-sm-3 pl-md-5 pr-2 pr-sm-3 pr-md-5">
-  <h4>{{display.time}}</h4>
-  <h4>{{display.ingredients}}</h4>
-  <h4>{{display.description}}</h4>
-  <h4>{{display.direction}}</h4>
+  {% if display %}
+      <img src="{{ i.image.url }}" height="250" width="270" align="left" border="1">
+      <p>{{display.description}}</p>
+      <h4><B>TIME</B>-{{display.time}}</h4>
+      <br>
+      <h4><B>INGREDIENTS-</B></h4>
+      <p>{{display.ingredients}}</p>
+      <br>
+      <h4><B>DIRECTIONS-</B></h4>
+      <p>{{display.directions}}</p>
+      <br>
+  {% else %}
+    <h4>NOT FOUND</h4>
+  {% endif %}
 </div>
 {% endblock %}

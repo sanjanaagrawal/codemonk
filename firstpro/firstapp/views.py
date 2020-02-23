@@ -26,7 +26,7 @@ def register(request):
 def search(request):
     if request.method=='POST':
         val=request.POST.get('element')
-        data=models.modeltable.objects.filter(name=val)
+        data=models.modeltable.objects.get(name=val)
         dict={'display':data}
         return render(request,'recipe.html',context=dict)
 
