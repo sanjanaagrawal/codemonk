@@ -7,6 +7,11 @@ from .forms import UserRegisterForm,UserUpdateForm,formtable
 def ind(request):
     return render(request,'ind.html')
 
+def index2(request):
+    dat=models.modeltable.objects.all()
+    dic={'disp':dat}
+    return render(request,'index2.html',context=dic)
+
 def index(request):
     dat=models.modeltable.objects.all()
     dic={'disp':dat}
@@ -23,18 +28,18 @@ def register(request):
     return render(request,'register.html',{'form':form})
 
 @login_required
-def search(request):
+def search(request,file):
+    data=models.modeltable.objects.get(name=file)
+    dict={'display':data}
+    return render(request,'recipe.html',context=dict)
+
+def searchfunc(request):
     if request.method=='POST':
         val=request.POST.get('element')
         data=models.modeltable.objects.get(name=val)
         dict={'display':data}
         return render(request,'recipe.html',context=dict)
-
     return render(request,'search.html')
-
-@login_required
-def profile(request):
-    return render(request,'profile.html')
 
 @login_required
 def addrecipe(request):
@@ -43,5 +48,4 @@ def addrecipe(request):
         form=formtable(request.POST)
         if form.is_valid():
             form.save()
-
     return render(request,'addrecipe.html',{'formdisplay':formdata})
